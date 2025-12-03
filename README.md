@@ -1,5 +1,9 @@
 # TChemGNN Research Implementation Guide
 
+Code for the paper [Efficient Learning of Molecular Properties Using Graph Neural Networks Enhanced with Chemistry Knowledge](https://pubs.acs.org/doi/10.1021/acsomega.5c07178) by Tetiana Lutchyn, Marie Mardal, Benjamin Ricaud, [ChemRxiv version](https://chemrxiv.org/engage/chemrxiv/article-details/68693d7cc1cb1ecda0442439).
+
+We build a simple GNN-based model that integrates chemistry knowledge that GNNs may have difficulties to learn. We show that this combination greatly enhances the accuracy compared with the pure GNN approach. With a simple approach, this study highlights some limitations of GNNs and the crucial benefit of giving GNN models easy access to global information about the graph in the context of applications to chemistry. We focus on regression tasks at the molecular level, on small-molecule data sets. 
+
 ## 🚀 Quick Reproduction
 
 ### 1. Environment Setup
@@ -197,11 +201,9 @@ python main.py --dataset esol --pooling_strategy mean
 ## ⚠️ **Research Notes**
 
 ### Critical Implementation Details:
-1. **No LR Scheduler**: Paper specifically avoids this
-2. **No Gradient Clipping**: Paper finds it unnecessary  
-3. **logP Exclusion**: Removes this feature (too predictive)
-4. **SMILES Ordering**: Leverages encoding structure for node selection
-5. **3D Computation**: Uses RDKit for molecular geometry
+
+1. **SMILES Ordering**: Leverages encoding structure for node selection
+2. **Molecular fingerprint Computation**: Uses RDKit for molecular properties and add them as node features
 
 ### Reproducibility:
 - Fixed random seeds throughout
@@ -217,4 +219,3 @@ This implementation provides a complete research platform for exploring GNN-base
 
 This code was written by Tetiana Lutchyn and refactored by Sebastian Iversen. The models were designed by Tetiana Lutchyn and Benjamin Ricaud. Training and experiments of the model(s) were performed by Tetiana Lutchyn. We thank Claude 3.7 for its help cleaning and refactoring the code.
 
-The results will be published soon and a link to the paper will be added when available.
